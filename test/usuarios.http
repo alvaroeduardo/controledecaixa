@@ -1,0 +1,35 @@
+# @name Criando-um-novo-usuario
+POST http://localhost:5555/api/usuarios
+Content-Type: application/json
+
+{
+    "nome": "ÁLVARO EDUARDO SILVA",
+    "cpf": "13878897618",
+    "cargo": "ESCREVENTE AUTORIZADO"
+}
+
+
+###
+
+# @name Buscar-todos-os-usuarios
+GET http://localhost:5555/api/usuarios
+
+###
+
+# @name Buscar-um-usuario-especifico
+GET http://localhost:5555/api/usuarios/1
+
+###
+
+# @name Atualizar-dados-de-um-usuario
+PUT http://localhost:5555/api/usuarios/1
+Content-Type: application/json
+
+{
+    "nome":"ALVARO EDUARDO SILVA"
+}
+
+###
+
+# @name Deletar-um-usuario
+DELETE http://localhost:5555/api/usuarios/1

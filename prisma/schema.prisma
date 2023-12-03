@@ -11,8 +11,50 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  nome  String
-  cpf   String
-  cargo String
+  id        Int         @id @default(autoincrement())
+  nome      String
+  cpf       String
+  cargo     String
+  Caixa     Caixa[]
+  Transacao Transacao[]
+}
+
+model Caixa {
+  id                    Int         @id @default(autoincrement())
+  idResponsavelAbertura Int
+  responsavelAbertura   User        @relation(fields: [idResponsavelAbertura], references: [id])
+  dataDeAbertura        DateTime
+  saldoInicial          Float
+  saldoFinal            Float?
+  caixaFechado          Boolean     @default(false)
+  dataFechamento        DateTime?
+  Transacao             Transacao[]
+}
+
+model CategoriaTransacao {
+  id        Int         @id @default(autoincrement())
+  titulo    String
+  Transacao Transacao[]
+}
+
+model MeioDePagamento {
+  id        Int         @id @default(autoincrement())
+  titulo    String
+  Transacao Transacao[]
+}
+
+model Transacao {
+  id                     Int                @id @default(autoincrement())
+  idCaixa                Int
+  caixa                  Caixa              @relation(fields: [idCaixa], references: [id])
+  idResponsavelTransacao Int
+  responsavelTransacao   User               @relation(fields: [idResponsavelTransacao], references: [id])
+  nomeDoCliente          String
+  descricao              String
+  idCategoria            Int
+  categoria              CategoriaTransacao @relation(fields: [idCategoria], references: [id])
+  idMeioDePagamento      Int
+  meioDePagamento        MeioDePagamento    @relation(fields: [idMeioDePagamento], references: [id])
+  valor                  Float
+  dataDaTransacao        DateTime
 }
