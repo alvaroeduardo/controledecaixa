@@ -1,0 +1,43 @@
+# @name Criar-uma-nova-transacao
+POST http://localhost:5555/api/transacao
+Content-Type: application/json
+
+{
+    "idCaixa": 2,
+    "idResponsavelTransacao": 2,
+    "nomeDoCliente": "Herbert Teixeira Candido",
+    "descricao": "Certidão de Casamento",
+    "idCategoria": 2,
+    "idMeioDePagamento": 2,
+    "valor": 67.79
+}
+
+###
+
+# @name Listar-todas-as-transacoes
+GET http://localhost:5555/api/transacao
+
+###
+
+# @name Listar-dados-de-uma-transacao-especifica
+GET http://localhost:5555/api/transacao/1
+
+###
+
+# @name Atualizar-transacao
+PUT http://localhost:5555/api/transacao/1
+Content-Type: application/json
+
+{
+    "idResponsavelTransacao": 2,
+    "nomeDoCliente": "Herbert Teixeira Candido",
+    "descricao": "Certidão de Casamento",
+    "idCategoria": 2,
+    "idMeioDePagamento": 2,
+    "valor": 57.19
+}
+
+###
+
+# @name Deletar-transacao
+DELETE http://localhost:5555/api/transacao/1

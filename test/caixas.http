@@ -15,7 +15,7 @@ GET http://localhost:5555/api/caixas
 ###
 
 # @name Listar-caixa-especifico
-GET http://localhost:5555/api/caixas/1
+GET http://localhost:5555/api/caixas/2
 
 ###
 

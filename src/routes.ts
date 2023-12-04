@@ -4,6 +4,7 @@ import { usuarioController } from './controllers/Users.controller'
 import { caixaController } from './controllers/Caixas.controller'
 import { meioDePagamentoController } from './controllers/MeiosDePagamento.controller'
 import { categoriaController } from './controllers/Categorias.controller'
+import { transacaoController } from './controllers/Transacoes.controller'
 
 const route = Router()
 
@@ -34,5 +35,12 @@ route.get('/categoriadetransacao/:id', categoriaController.encontrarSomentoUm)
 route.post('/categoriadetransacao', categoriaController.criarNovaCategoriaDeTransacao)
 route.put('/categoriadetransacao/:id', categoriaController.atualizarCategoriaDeTransacao)
 route.delete('/categoriadetransacao/:id', categoriaController.deletarCategoriaDeTransacao)
+
+// Rotas de Transação
+route.get('/transacao', transacaoController.encontrarTodos)
+route.get('/transacao/:id', transacaoController.encontrarSomenteUm)
+route.post('/transacao', transacaoController.criarTransacao)
+route.put('/transacao/:id', transacaoController.atualizarTransacao)
+route.delete('/transacao/:id', transacaoController.deletarTransacao)
 
 export default route
