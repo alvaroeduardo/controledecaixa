@@ -1,0 +1,32 @@
+# @name Criar-meio-de-pagamento
+POST http://localhost:5555/api/meiosdepagamento
+Content-Type: application/json
+
+{
+    "titulo":"PIX"
+}
+
+###
+
+# @name Listar-todos-os-meios-de-pagamento
+GET http://localhost:5555/api/meiosdepagamento
+
+###
+
+# @name Listar-um-meio-de-pagamento-especifico
+GET http://localhost:5555/api/meiosdepagamento/1
+
+###
+
+# @name Atualizar-meio-de-pagamento
+PUT http://localhost:5555/api/meiosdepagamento/1
+Content-Type: application/json
+
+{
+    "titulo":"Dinheiro em espécie"
+}
+
+###
+
+# @name Deletar-meio-de-pagamento
+DELETE http://localhost:5555/api/meiosdepagamento/1
