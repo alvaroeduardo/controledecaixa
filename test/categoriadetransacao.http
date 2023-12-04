@@ -1,0 +1,32 @@
+# @name Criar-nova-categoria
+POST http://localhost:5555/api/categoriadetransacao
+Content-Type: application/json
+
+{
+    "titulo":"Caixa Físico"
+}
+
+###
+
+# @name Listar-todas-as-categorias
+GET http://localhost:5555/api/categoriadetransacao
+
+###
+
+# @name Listar-uma-categoria-específica
+GET http://localhost:5555/api/categoriadetransacao/1
+
+###
+
+# @name Atualizar-categoria
+PUT http://localhost:5555/api/categoriadetransacao/1
+Content-Type: application/json
+
+{
+    "titulo":"CRC Nacional"
+}
+
+###
+
+# @name Deletar-categoria
+DELETE http://localhost:5555/api/categoriadetransacao/1

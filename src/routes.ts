@@ -3,6 +3,7 @@ import { Router } from 'express'
 import { usuarioController } from './controllers/Users.controller'
 import { caixaController } from './controllers/Caixas.controller'
 import { meioDePagamentoController } from './controllers/MeiosDePagamento.controller'
+import { categoriaController } from './controllers/Categorias.controller'
 
 const route = Router()
 
@@ -26,5 +27,12 @@ route.get('/meiosdepagamento/:id', meioDePagamentoController.encontrarSomenteUm)
 route.post('/meiosdepagamento', meioDePagamentoController.criarUmNovoMeioDePagamento)
 route.put('/meiosdepagamento/:id', meioDePagamentoController.atualizarMeioDePagamento)
 route.delete('/meiosdepagamento/:id', meioDePagamentoController.deletarMeioDePagamento)
+
+// Rotas da Categoria de Transação
+route.get('/categoriadetransacao', categoriaController.encontrarTodos)
+route.get('/categoriadetransacao/:id', categoriaController.encontrarSomentoUm)
+route.post('/categoriadetransacao', categoriaController.criarNovaCategoriaDeTransacao)
+route.put('/categoriadetransacao/:id', categoriaController.atualizarCategoriaDeTransacao)
+route.delete('/categoriadetransacao/:id', categoriaController.deletarCategoriaDeTransacao)
 
 export default route
