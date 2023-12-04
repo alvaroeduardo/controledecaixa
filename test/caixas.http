@@ -1,0 +1,34 @@
+# @name Criar-novo-caixa
+POST http://localhost:5555/api/caixas
+Content-Type: application/json
+
+{
+    "idResponsavelAbertura": 2,
+    "saldoInicial": 2250.00
+}
+
+###
+
+# @name Listar-todos-os-caixas
+GET http://localhost:5555/api/caixas
+
+###
+
+# @name Listar-caixa-especifico
+GET http://localhost:5555/api/caixas/1
+
+###
+
+# @name Atualizar-caixa
+PUT http://localhost:5555/api/caixas/1
+Content-Type: application/json
+
+{
+    "saldoFinal": 5690.25,
+    "caixaFechado": true
+}
+
+###
+
+# @name Deletar-caixa
+DELETE http://localhost:5555/api/caixas/1
