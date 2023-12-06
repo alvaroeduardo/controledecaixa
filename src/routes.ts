@@ -6,41 +6,44 @@ import { meioDePagamentoController } from './controllers/MeiosDePagamento.contro
 import { categoriaController } from './controllers/Categorias.controller'
 import { transacaoController } from './controllers/Transacoes.controller'
 
+import { Autenticacao } from './middlewares/Autenticacao'
+
 const route = Router()
 
 // Rotas de Usuário
-route.get('/usuarios', usuarioController.encontrarTodos)
-route.get('/usuarios/:id', usuarioController.encontrarSomenteUm)
-route.post('/usuarios', usuarioController.criarUmNovoUsuario)
-route.put('/usuarios/:id', usuarioController.atualizarUsuarioExistente)
-route.delete('/usuarios/:id', usuarioController.deletarUsuarioExistente)
+route.get('/usuarios', Autenticacao, usuarioController.encontrarTodos)
+route.get('/usuarios/:id', Autenticacao, usuarioController.encontrarSomenteUm)
+route.post('/usuarios', Autenticacao, usuarioController.criarUmNovoUsuario)
+route.put('/usuarios/:id', Autenticacao, usuarioController.atualizarUsuarioExistente)
+route.delete('/usuarios/:id', Autenticacao, usuarioController.deletarUsuarioExistente)
+route.post('/usuarios/login', usuarioController.login)
 
 // Rotas do Caixa
-route.get('/caixas', caixaController.encontrarTodos)
-route.get('/caixas/:id', caixaController.encontrarSomenteUm)
-route.post('/caixas', caixaController.criarUmNovoCaixa)
-route.put('/caixas/:id', caixaController.atualizarDadosDoCaixa)
-route.delete('/caixas/:id', caixaController.deletarCaixa)
+route.get('/caixas', Autenticacao, caixaController.encontrarTodos)
+route.get('/caixas/:id', Autenticacao, caixaController.encontrarSomenteUm)
+route.post('/caixas', Autenticacao, caixaController.criarUmNovoCaixa)
+route.put('/caixas/:id', Autenticacao, caixaController.atualizarDadosDoCaixa)
+route.delete('/caixas/:id', Autenticacao, caixaController.deletarCaixa)
 
 // Rotas do Meio de Pagamento
-route.get('/meiosdepagamento', meioDePagamentoController.encontrarTodos)
-route.get('/meiosdepagamento/:id', meioDePagamentoController.encontrarSomenteUm)
-route.post('/meiosdepagamento', meioDePagamentoController.criarUmNovoMeioDePagamento)
-route.put('/meiosdepagamento/:id', meioDePagamentoController.atualizarMeioDePagamento)
-route.delete('/meiosdepagamento/:id', meioDePagamentoController.deletarMeioDePagamento)
+route.get('/meiosdepagamento', Autenticacao, meioDePagamentoController.encontrarTodos)
+route.get('/meiosdepagamento/:id', Autenticacao, meioDePagamentoController.encontrarSomenteUm)
+route.post('/meiosdepagamento', Autenticacao, meioDePagamentoController.criarUmNovoMeioDePagamento)
+route.put('/meiosdepagamento/:id', Autenticacao, meioDePagamentoController.atualizarMeioDePagamento)
+route.delete('/meiosdepagamento/:id', Autenticacao, meioDePagamentoController.deletarMeioDePagamento)
 
 // Rotas da Categoria de Transação
-route.get('/categoriadetransacao', categoriaController.encontrarTodos)
-route.get('/categoriadetransacao/:id', categoriaController.encontrarSomentoUm)
-route.post('/categoriadetransacao', categoriaController.criarNovaCategoriaDeTransacao)
-route.put('/categoriadetransacao/:id', categoriaController.atualizarCategoriaDeTransacao)
-route.delete('/categoriadetransacao/:id', categoriaController.deletarCategoriaDeTransacao)
+route.get('/categoriadetransacao', Autenticacao, categoriaController.encontrarTodos)
+route.get('/categoriadetransacao/:id', Autenticacao, categoriaController.encontrarSomentoUm)
+route.post('/categoriadetransacao', Autenticacao, categoriaController.criarNovaCategoriaDeTransacao)
+route.put('/categoriadetransacao/:id', Autenticacao, categoriaController.atualizarCategoriaDeTransacao)
+route.delete('/categoriadetransacao/:id', Autenticacao, categoriaController.deletarCategoriaDeTransacao)
 
 // Rotas de Transação
-route.get('/transacao', transacaoController.encontrarTodos)
-route.get('/transacao/:id', transacaoController.encontrarSomenteUm)
-route.post('/transacao', transacaoController.criarTransacao)
-route.put('/transacao/:id', transacaoController.atualizarTransacao)
-route.delete('/transacao/:id', transacaoController.deletarTransacao)
+route.get('/transacao', Autenticacao, transacaoController.encontrarTodos)
+route.get('/transacao/:id', Autenticacao, transacaoController.encontrarSomenteUm)
+route.post('/transacao', Autenticacao, transacaoController.criarTransacao)
+route.put('/transacao/:id', Autenticacao, transacaoController.atualizarTransacao)
+route.delete('/transacao/:id', Autenticacao, transacaoController.deletarTransacao)
 
 export default route

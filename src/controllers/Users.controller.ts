@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import * as z from 'zod'
+import * as jwt from 'jsonwebtoken'
 import { prisma } from '../utils/prisma'
 
 export const usuarioController = {
@@ -172,4 +173,37 @@ export const usuarioController = {
             })
         }
     },
+
+    async login(req: Request, res: Response) {
+        try {
+            const bodyParser = z.object({
+                cpf: z.string(),
+            })
+
+            const {cpf} = bodyParser.parse(req.body)
+
+            const usuario = await prisma.user.findFirst({
+                where: {
+                    cpf
+                }
+            })
+
+            if (!usuario) return res.status(400).json({
+                mensagem: "Usuário não encontrado."
+            })
+
+            const token = jwt.sign({data: usuario}, "cartorio", {expiresIn: '2h'})
+
+            console.log(usuario)
+            return res.status(200).json({
+                usuario: JSON.stringify(usuario),
+                token
+            })
+        } catch (error) {
+            return res.status(400).json({
+                mensagem: "Não foi possível realizar o login. Contate o time de desenvolvimento.",
+                erro: error
+            })
+        }
+    }
 }
