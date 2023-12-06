@@ -194,7 +194,6 @@ export const usuarioController = {
 
             const token = jwt.sign({data: usuario}, "cartorio", {expiresIn: '2h'})
 
-            console.log(usuario)
             return res.status(200).json({
                 usuario: JSON.stringify(usuario),
                 token
