@@ -70,6 +70,7 @@ function Login() {
             title: 'Erro!',
             description: "Não foi possível realizar o login.",
             status: 'error',
+            position: 'top-right',
             duration: 9000,
             isClosable: true
         });

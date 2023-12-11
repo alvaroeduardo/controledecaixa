@@ -61,10 +61,11 @@ export const transacaoController = {
                 idResponsavelTransacao: z.number(),
                 nomeDoCliente: z.string(),
                 descricao: z.string(),
-                idCategoria: z.number(),
-                idMeioDePagamento: z.number(),
-                valor: z.number(),
-                dataDaTransacao: z.date().default(new Date())
+                idCategoria: z.string(),
+                idMeioDePagamento: z.string(),
+                valor: z.string(),
+                dataDaTransacao: z.string(),
+                tipoMovimentacao: z.boolean()
             })
 
             const dadosTransacao = bodyParser.parse(req.body)
@@ -83,13 +84,13 @@ export const transacaoController = {
 
             const categoriaExistente = await prisma.categoriaTransacao.findUnique({
                 where: {
-                    id: dadosTransacao.idCategoria
+                    id: parseInt(dadosTransacao.idCategoria)
                 }
             })
 
             const meioDePagamentoExistente = await prisma.meioDePagamento.findUnique({
                 where: {
-                    id: dadosTransacao.idMeioDePagamento
+                    id: parseInt(dadosTransacao.idMeioDePagamento)
                 }
             })
 
@@ -98,7 +99,17 @@ export const transacaoController = {
             })
 
             const transacao = await prisma.transacao.create({
-                data: dadosTransacao
+                data: {
+                    idCaixa: dadosTransacao.idCaixa,
+                    idResponsavelTransacao: dadosTransacao.idResponsavelTransacao,
+                    nomeDoCliente: dadosTransacao.nomeDoCliente,
+                    descricao: dadosTransacao.descricao,
+                    idCategoria: parseInt(dadosTransacao.idCategoria),
+                    idMeioDePagamento: parseInt(dadosTransacao.idMeioDePagamento),
+                    valor: parseFloat(dadosTransacao.valor),
+                    dataDaTransacao: new Date(dadosTransacao.dataDaTransacao),
+                    tipoMovimentacao: dadosTransacao.tipoMovimentacao
+                }
             })
 
             return res.status(200).json(transacao)

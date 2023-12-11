@@ -40,6 +40,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                             title: 'Bem vindo(a)!',
                             description: "Seja bem vindo(a) ao Controle de Caixa.",
                             status: 'success',
+                            position: 'top-right',
                             duration: 9000,
                             isClosable: true
                         });
@@ -50,6 +51,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                             title: 'Ops...',
                             description: "Token inválido, redirecionar para a página de login.",
                             status: 'warning',
+                            position: 'top-right',
                             duration: 9000,
                             isClosable: true
                         });
@@ -62,6 +64,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                         title: 'Erro!',
                         description: "Erro ao verificar token.",
                         status: 'error',
+                        position: 'top-right',
                         duration: 9000,
                         isClosable: true
                     });
@@ -92,6 +95,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 title: 'Bem vindo(a)!',
                 description: "Seja bem vindo(a) ao Controle de Caixa.",
                 status: 'success',
+                position: 'top-right',
                 duration: 9000,
                 isClosable: true
             });
@@ -102,6 +106,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 title: 'Erro!',
                 description: "Erro ao fazer login.",
                 status: 'error',
+                position: 'top-right',
                 duration: 9000,
                 isClosable: true
             });
@@ -116,6 +121,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             title: 'Até mais!',
             description: "Logout realizado com sucesso!",
             status: 'success',
+            position: 'top-right',
             duration: 9000,
             isClosable: true
         });
@@ -137,6 +143,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 title: 'Erro!',
                 description: "Erro ao fazer login.",
                 status: 'error',
+                position: 'top-right',
                 duration: 9000,
                 isClosable: true
             });
